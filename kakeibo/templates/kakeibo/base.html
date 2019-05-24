@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- bootstrapのcss読み込み -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <!-- DataTablesのcss読み込み -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
+
+    <title>Kakeibo</title>
+</head>
+
+
+
+<body>
+    {% block content %}
+    {% endblock %}
+
+    <!-- bootstrapのjavascript読み込み -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!-- DataTablesのjavascript読み込み -->
+    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
+
+    <!-- DataTablesの定義 -->
+    <script>
+        jQuery(function($){
+            $.extend( $.fn.dataTable.defaults, {
+
+                //日本語化
+                language: {
+                    url:"http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+                }
+            });
+            $("#kakeibo_list").DataTable({
+                "searching": true,      //検索機能
+                "paging": true,         //ページング機能
+                "ordering": true,       //ソート機能
+                "lengthChange": true,   //件数切り替え機能
+
+            //画面崩れ防止
+            }).columns.adjust().draw();
+        });
+    </script>
+</body>
+</html>
